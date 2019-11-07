@@ -1,4 +1,7 @@
+import datetime
+
 import discord
+import pytz
 from discord.ext import commands
 
 from util import checks
@@ -170,6 +173,39 @@ class AdminCommands(commands.Cog):
             post_message.add_field(name='• Battle Royale Player Matches',
                                    value='This endpoint will return the latest matches of a player.\n'
                                          'The result will include a list of match objects')
+            post_messages.append(post_message)
+        elif post_type == 'home':
+            post_message = discord.Embed()
+            post_message.colour = discord.Color.blue()
+            post_message.set_author(name='Fortnite-API.com', url='https://fortnite-api.com')
+            post_message.set_thumbnail(url='https://fortnite-api.com/logo.png')
+            post_message.description = 'Welcome to our Discord server!\n' \
+                                       'Here you get support & updates of our API.'
+            post_message.add_field(name='**Rules**',
+                                   value='**1.** Be friendly and respectful!\n'
+                                         '**2.** Don\'t spam or write in caps!\n'
+                                         '**3.** Advertisement of any kind are forbidden.\n'
+                                         '**4.** Follow Discord\'s [Terms of Service](https://discordapp.com/terms), '
+                                         '[Community Guidelines](https://discordapp.com/guidelines)!\n'
+                                         '**5.** Follow the instructions of the <@&640551807978045461>!\n\n'
+                                         'We reserve the right to change or modify any of the rules at any time.')
+            post_message.add_field(name='**Links**',
+                                   value='[Website](https://fortnite-api.com/)\n'
+                                         '[Documentation](https://fortnite-api.com/documentation)\n'
+                                         '[Twitter](https://twitter.com/Fortnite_API)\n'
+                                         '[Server Invite](https://discord.gg/AqzEcMm)')
+            post_message.add_field(name='**Roles**',
+                                   value='React with a Emoji to get the specific Role.\n\n'
+                                         '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
+                                         '<:javascript:642027841512538148> **-** Java Script / Node.js\n'
+                                         '<:python:642027841017479179> **-** Python\n'
+                                         '<:java:642027839008276493> **-** Java\n'
+                                         '<:csharp:642027845434212383> **-** C#\n'
+                                         '<:php:642041601291583488> **-** PHP\n'
+                                         '<:swift:642027842334490652> **-** Swift\n'
+                                         'Missing your programming language? Let us know.')
+            post_message.set_footer(text=f'Last Update')
+            post_message.timestamp = datetime.datetime.now(pytz.timezone('UTC'))
             post_messages.append(post_message)
 
         for post_message in post_messages:
