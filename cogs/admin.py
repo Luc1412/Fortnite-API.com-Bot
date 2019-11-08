@@ -76,103 +76,75 @@ class AdminCommands(commands.Cog):
         if post_type == 'upcoming':
             post_message = discord.Embed()
             post_message.colour = discord.Color.dark_purple()
-            post_message.set_author(name='General features')
+            post_message.description = '🔻 **-** Features marked with this tag require a high effort and may get ' \
+                                       'published later'
+            post_message.set_author(name='General')
             post_message.add_field(name='• Fortnite server status',
-                                   value='This endpoint will return information of the server status.\n'
-                                         'The result will include a server status object with information about the '
-                                         'main server status (if you able to play Fortnite), all categories shown on '
-                                         'https://status.epicgames.com, information about maintenance, information '
-                                         'about the latest issues.')
+                                   value='Get information about the server status (Lightswitch + '
+                                         'https://status.epicgames.com)')
             post_message.add_field(name='• Creator Code validation & information',
-                                   value='This endpoint will return information about the inserted Creator Code.\n'
-                                         'The result will include a Creator Code object if the Creator Code exists.')
-            post_message.add_field(name='• EpicGames blog posts',
-                                   value='This endpoint will return the blog posts fom the news tab on the website.\n'
-                                         'The result will include a list of blog entry objects\n'
+                                   value='Get information about the inserted Creator Code and check if it exists.')
+            post_message.add_field(name='• Epic Games blog posts',
+                                   value='Get the blog posts from the news tab on the website.\n'
                                          '- Available in all game languages')
             post_message.add_field(name='• Player lookup',
-                                   value='This endpoint will return information about a player.\n'
-                                         'The result will include a player object with id, name, console name/ID\n'
-                                         '- Lookup by name, console name(case sensitive) and ID available')
+                                   value='Get information about a player.\n'
+                                         '- Lookup by name, console name and ID available')
+            post_message.add_field(name='• Game assets',
+                                   value='Get Assets from the game files.')
+            post_message.add_field(name='• Version information',
+                                   value='Get version information like the current game version.', inline=False)
             post_messages.append(post_message)
 
             post_message = discord.Embed()
             post_message.colour = discord.Color.dark_purple()
-            post_message.set_author(name='Battle Royale Features')
+            post_message.set_author(name='Battle Royale')
             post_message.add_field(name='• Upcoming Cosmetics',
-                                   value='This endpoint will return upcoming/unreleased cosmetics.\n'
-                                         'The result will include a list of cosmetic objects.\n'
+                                   value='Get upcoming/unreleased cosmetics.\n'
                                          '- Available in all game languages')
             post_message.add_field(name='• Playlist information',
-                                   value='This endpoint will return all playlists/gamemodes.\n'
-                                         'The result will include a list of playlist objects with name, '
-                                         'description, image, playlist information eg. team-size\n'
+                                   value='Get all playlists/game modes.\n'
                                          '- Available in all game languages\n'
-                                         '- Includes a option to only show active playlists in the specific regions.')
-            post_message.add_field(name='• Weapon information',
-                                   value='This endpoint will return all weapons.\n'
-                                         'The result will include a list of weapon objects with name, '
-                                         'icon, damage and rarities\n'
-                                         '- Available in all game languages\n'
-                                         '- Includes a option to only show enabled weapons.')
+                                         '- Includes an option to show only active playlists in the specific regions.')
+            post_message.add_field(name='• Weapon information 🔻',
+                                   value='Get all weapons.\n'
+                                         '- Available in all game languages')
             post_message.add_field(name='• Player stats',
-                                   value='This endpoint will return the Battle Royale stats from a player.\n'
-                                         'The result will include a BR stats object\n'
+                                   value='Get the stats from a player.\n'
                                          '- Stats V1 & Stats V2 available\n'
                                          '- Option for seasonal stats (only latest season)')
-            post_message.add_field(name='• Challenges',
-                                   value='This endpoint will return all challenges.\n'
-                                         'The result will include a list of challenge object\n'
-                                         '- Available in all game languages\n'
-                                         '- Option for active ones?')
+            post_message.add_field(name='• Challenges 🔻',
+                                   value='Get all missions & challenges.\n'
+                                         '- Available in all game languages')
+            post_message.add_field(name='• Map',
+                                   value='Get the current map with POI Names.\n'
+                                         '- Available in all game languages')
             post_message.add_field(name='• Creative island information',
-                                   value='This endpoint will return information of a published Creative island.\n'
-                                         'The result will include a Creative island objects if found')
+                                   value='Get information of a published Creative island if it exists.')
             post_messages.append(post_message)
 
             post_message = discord.Embed()
             post_message.colour = discord.Color.dark_purple()
             post_message.set_author(name='Save the World features')
-            post_message.add_field(name='• Player stats',
-                                   value='This endpoint will return the Save the World stats from a player.\n'
-                                         'The result will include a STW stats object with base power, level and '
-                                         'owned items information')
-            post_message.add_field(name='• World info',
-                                   value='This endpoint will return information about the the missions.\n'
-                                         'The result will include a world info object with a list of missions '
-                                         '(eg. for missions alerts)')
-            post_message.add_field(name='• Shop',
-                                   value='This endpoint will return the shop.\n'
-                                         'The result will include a STW shop object\n'
+            post_message.add_field(name='• Player stats 🔻',
+                                   value='Get stats from a player.')
+            post_message.add_field(name='• World info 🔻',
+                                   value='Get information about all missions. (eg. for missions alerts)')
+            post_message.add_field(name='• Shop 🔻',
+                                   value='Get the current shop.\n'
                                          '- Available in all game languages')
             post_messages.append(post_message)
 
             post_message = discord.Embed()
             post_message.colour = discord.Color.dark_purple()
-            post_message.set_author(name='Website features')
-            post_message.add_field(name='• Discord login for API key',
-                                   value='We\'ll soon add a authentication to prevent spam/abuse.\n'
-                                         'The login will work trough Discord.\n'
-                                         '- After successfully authentication you\'ll receive a `Verified User` rank '
-                                         'in this Discord')
+            post_message.set_author(name='Website & API')
+            post_message.add_field(name='• API keys',
+                                   value='API requests will require an API key soon.\n'
+                                         'The authentication will work through Discord.\n'
+                                         'This change will be announced about a week before it goes live.')
             post_message.add_field(name='• Featured projects',
-                                   value='We soon add an page on our website where you can add your project if it uses'
-                                         'our API and corresponds our quality standards.')
-            post_messages.append(post_message)
-
-            post_message = discord.Embed()
-            post_message.colour = discord.Color.dark_purple()
-            post_message.set_author(name='Premium features')
-            post_message.add_field(name='• Auto updates',
-                                   value='Get automatically updates if information are changing\n'
-                                         'This feature will work for:\n'
-                                         '- BR/STW Shop\n'
-                                         '- STW Mission Alerts\n'
-                                         '- Upcoming cosmetics\n'
-                                         '- BR Matches')
-            post_message.add_field(name='• Battle Royale Player Matches',
-                                   value='This endpoint will return the latest matches of a player.\n'
-                                         'The result will include a list of match objects')
+                                   value='We soon add a page on our website where you can add your project if it uses '
+                                         'our API and corresponds to our quality standards.')
             post_messages.append(post_message)
         elif post_type == 'home':
             post_message = discord.Embed()
