@@ -56,8 +56,7 @@ class AdminCommands(commands.Cog):
             update_role = context.utils.role.notification()
             await update_role.edit(mentionable=True, reason='Update mention')
 
-            # await context.utils.channel.news().send(content=update_role.mention, embed=update_message)
-            await context.utils.channel.news().send(content='@everyone', embed=update_message)
+            await context.utils.channel.news().send(content=update_role.mention, embed=update_message)
 
             await update_role.edit(mentionable=False, reason='Update mention')
 
@@ -71,7 +70,8 @@ class AdminCommands(commands.Cog):
     @commands.command(case_insensitive=True)
     @commands.guild_only()
     @checks.is_admin()
-    async def post(self, ctx: Context, post_type, channel: discord.TextChannel):
+    async def post(self, ctx: Context, post_type, channel: discord.TextChannel, message_id: int = None):
+        message = await channel.fetch_message(message_id) if message_id else None
         post_messages = []
         if post_type == 'upcoming':
             post_message = discord.Embed()
@@ -153,7 +153,7 @@ class AdminCommands(commands.Cog):
             post_message.set_thumbnail(url='https://fortnite-api.com/logo.png')
             post_message.description = 'Welcome to our Discord server!\n' \
                                        'Here you get support & updates of our API.'
-            post_message.add_field(name='**Rules**',
+            post_message.add_field(name='**Rules**', inline=False,
                                    value='**1.** Be friendly and respectful!\n'
                                          '**2.** Don\'t spam or write in caps!\n'
                                          '**3.** Advertisement of any kind are forbidden.\n'
@@ -161,12 +161,12 @@ class AdminCommands(commands.Cog):
                                          '[Community Guidelines](https://discordapp.com/guidelines)!\n'
                                          '**5.** Follow the instructions of the <@&640551807978045461>!\n\n'
                                          'We reserve the right to change or modify any of the rules at any time.')
-            post_message.add_field(name='**Links**',
+            post_message.add_field(name='**Links**', inline=False,
                                    value='[Website](https://fortnite-api.com/)\n'
                                          '[Documentation](https://fortnite-api.com/documentation)\n'
                                          '[Twitter](https://twitter.com/Fortnite_API)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
-            post_message.add_field(name='**Roles**',
+            post_message.add_field(name='**Roles**', inline=False,
                                    value='React with a Emoji to get the specific Role.\n\n'
                                          '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
                                          '<:javascript:642027841512538148> **-** Java Script / Node.js\n'
@@ -181,7 +181,11 @@ class AdminCommands(commands.Cog):
             post_messages.append(post_message)
 
         for post_message in post_messages:
-            await channel.send(embed=post_message)
+            print(message)
+            if not message:
+                await channel.send(embed=post_message)
+            else:
+                await message.edit(embed=post_message)
 
 
 def setup(bot):
