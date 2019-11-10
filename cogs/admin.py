@@ -34,7 +34,7 @@ class AdminCommands(commands.Cog):
                                                             '**Should we notify someone?**\n'
                                                             '\U0001f514 **- Enable Notification**\n'
                                                             '\U0001f515 **- Disable Notification**',
-                                                            reactions=['\U0001f514', '\U0001f515'])
+                                                            reactions=['🔔', '🔕'])
 
         def f1(result):
             return result[0]
@@ -66,7 +66,7 @@ class AdminCommands(commands.Cog):
             await update_role.edit(mentionable=True, reason='Update mention')
 
             await context.utils.channel.news().send(
-                content=update_role.mention if selection.result()[4] == '\U0001f514' else None,
+                content=update_role.mention if selection.result()[3] == '🔔' else None,
                 embed=update_message)
 
             await update_role.edit(mentionable=False, reason='Update mention')
