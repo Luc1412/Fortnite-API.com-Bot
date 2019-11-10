@@ -27,14 +27,6 @@ class FortniteApiSupport(commands.Bot):
         self.db = Database(self)
         self.utils = Utils(self)
 
-    @property
-    def scheduler(self):
-        return self.get_cog('ScheduleManager')
-
-    @property
-    def storage(self):
-        return self.get_cog('StorageManager')
-
 
 async def get_prefix(bot, message: discord.Message):
     return ['!']
@@ -58,8 +50,7 @@ def init(bot_class=FortniteApiSupport):
         global start_time
         if start_time == 0.0:
             return
-        bot.logger.info(f'[CORE] The bot was started successfully after {int(time.time() - start_time)} seconds with '
-                        f'{bot.shard_count} Shards')
+        bot.logger.info(f'[CORE] The bot was started successfully after {int(time.time() - start_time)} seconds.')
         start_time = 0.0
 
     @client.event
@@ -73,11 +64,7 @@ def init(bot_class=FortniteApiSupport):
         if isinstance(error, ignored):
             return
 
-        if isinstance(error, commands.NoPrivateMessage):
-            pass
-            # return await bot.send_error(ctx, error='This command cannot be used in private messages.', dm=True)
-        else:
-            raise error
+        raise error
 
     @client.event
     async def on_error(event, *args, **kwargs):

@@ -29,6 +29,13 @@ class AdminCommands(commands.Cog):
                                                        '**Please enter the image url.**\n'
                                                        'For no image enter `none` for no image.')
 
+        notification_selection = image_selection.add_result('*', SelectionType.REACTION, 'Select Notification',
+                                                            'Message successfully set!\n\n'
+                                                            '**Should we notify someone?**\n'
+                                                            '\U0001f514 **- Enable Notification**\n'
+                                                            '\U0001f515 **- Disable Notification**',
+                                                            reactions=['\U0001f514', '\U0001f515'])
+
         def f1(result):
             return result[0]
 
@@ -38,12 +45,14 @@ class AdminCommands(commands.Cog):
         def f3(result):
             return result[2]
 
-        submit_selection = image_selection.add_result('*', SelectionType.CONFIRM_SELECTION, ReplacedText('{}', f1),
-                                                      ReplacedText('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{}', f2),
-                                                      color=discord.Color.blurple(),
-                                                      image=ReplacedText('{}', f3),
-                                                      thumbnail='https://fortnite-api.com/logo.png',
-                                                      footer='Subscribe to Updates in #home by clicking on the reaction.')
+        submit_selection = notification_selection.add_result('*', SelectionType.CONFIRM_SELECTION,
+                                                             ReplacedText('{}', f1),
+                                                             ReplacedText('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{}', f2),
+                                                             color=discord.Color.blurple(),
+                                                             image=ReplacedText('{}', f3),
+                                                             thumbnail='https://fortnite-api.com/logo.png',
+                                                             footer='Subscribe to Updates in #home by clicking on the '
+                                                                    'reaction.')
 
         async def a(context, result):
             update_message = discord.Embed()
@@ -56,7 +65,9 @@ class AdminCommands(commands.Cog):
             update_role = context.utils.role.notification()
             await update_role.edit(mentionable=True, reason='Update mention')
 
-            await context.utils.channel.news().send(content=update_role.mention, embed=update_message)
+            await context.utils.channel.news().send(
+                content=update_role.mention if selection.result()[4] == '\U0001f514' else None,
+                embed=update_message)
 
             await update_role.edit(mentionable=False, reason='Update mention')
 
@@ -167,7 +178,7 @@ class AdminCommands(commands.Cog):
                                          '[Twitter](https://twitter.com/Fortnite_API)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
             post_message.add_field(name='**Roles**', inline=False,
-                                   value='React with a Emoji to get the specific Role.\n\n'
+                                   value='React to the emojis to self-assign roles.\n\n'
                                          '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
                                          '<:javascript:642027841512538148> **-** Java Script / Node.js\n'
                                          '<:python:642027841017479179> **-** Python\n'
@@ -176,7 +187,7 @@ class AdminCommands(commands.Cog):
                                          '<:php:642041601291583488> **-** PHP\n'
                                          '<:swift:642027842334490652> **-** Swift\n'
                                          'Missing your programming language? Let us know.')
-            post_message.set_footer(text=f'Last Update')
+            post_message.set_footer(text=f'Last update')
             post_message.timestamp = datetime.datetime.now(pytz.timezone('UTC'))
             post_messages.append(post_message)
 

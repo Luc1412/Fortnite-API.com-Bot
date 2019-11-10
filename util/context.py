@@ -16,7 +16,6 @@ class Context(commands.Context):
 
     @property
     def utils(self):
-
         return self.bot.utils
 
     @property
