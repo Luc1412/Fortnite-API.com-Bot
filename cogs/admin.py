@@ -176,6 +176,7 @@ class AdminCommands(commands.Cog):
                                    value='[Website](https://fortnite-api.com/)\n'
                                          '[Documentation](https://fortnite-api.com/documentation)\n'
                                          '[Twitter](https://twitter.com/Fortnite_API)\n'
+                                         '[GitHub](https://github.com/Fortnite-API)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
             post_message.add_field(name='**Roles**', inline=False,
                                    value='React to the emojis to self-assign roles.\n\n'
