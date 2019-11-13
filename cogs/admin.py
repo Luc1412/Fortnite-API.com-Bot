@@ -51,7 +51,7 @@ class AdminCommands(commands.Cog):
                                                              color=discord.Color.blurple(),
                                                              image=ReplacedText('{}', f3),
                                                              thumbnail='https://fortnite-api.com/logo.png',
-                                                             footer='Subscribe to Updates in #home by clicking on the '
+                                                             footer='Subscribe to Updates in #info by clicking on the '
                                                                     'reaction.')
 
         async def a(context, result):

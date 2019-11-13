@@ -212,8 +212,13 @@ class TextSelection(SelectionBase):
 
         reaction_task.cancel()
         await self.interface.message.clear_reactions()
-        if type(result) is not discord.Message:
-            return SelectionResult(SelectionResultType.FAIL, 1)
+        if type(result) is tuple:
+            reaction, member = result
+            emoji = reaction.emoji
+            if emoji == self.interface.fail_emoji:
+                return SelectionResult(SelectionResultType.FAIL, 1)
+            if self is not self.interface.first and emoji == self.interface.back_emoji:
+                return SelectionResult(SelectionResultType.BACK)
         self.next = self.result_events.get(result.content, self.result_events.get('*', None))
         data = result.content
         await result.delete()
@@ -400,7 +405,7 @@ class SelectionInterface:
                         self.current_selection.next = SelectionFail(self, self.abort_title, self.abort_text, False)
                 elif result.type is SelectionResultType.RETRY:
                     self.current_selection = self.first
-                    self._result = []
+                    self._result = {}
                     return await self.start(retry=True)
             except AttributeError:
                 pass
