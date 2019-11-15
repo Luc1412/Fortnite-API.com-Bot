@@ -60,7 +60,7 @@ class AdminCommands(commands.Cog):
             update_message.colour = discord.Color.blurple()
             update_message.set_thumbnail(url='https://fortnite-api.com/logo.png')
             update_message.description = f'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{result[1]}'
-            update_message.set_footer(text='Subscribe to Updates in #home by clicking on the reaction.')
+            update_message.set_footer(text='Subscribe to Updates in #info by clicking on the reaction.')
 
             update_role = context.utils.role.notification()
             await update_role.edit(mentionable=True, reason='Update mention')
