@@ -172,16 +172,23 @@ class AdminCommands(commands.Cog):
                                          '[Community Guidelines](https://discordapp.com/guidelines)!\n'
                                          '**5.** Follow the instructions of the <@&640551807978045461>!\n\n'
                                          'We reserve the right to change or modify any of the rules at any time.')
-            post_message.add_field(name='**Links**', inline=False,
+            post_message.add_field(name='**Links**',
                                    value='[Website](https://fortnite-api.com/)\n'
                                          '[Documentation](https://fortnite-api.com/documentation)\n'
                                          '[Twitter](https://twitter.com/Fortnite_API)\n'
                                          '[GitHub](https://github.com/Fortnite-API)\n'
+                                         '[PayPal (donation)](https://fortnite-api.com/paypal)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
+            post_message.add_field(name='**Libraries**',
+                                   value='<:javascript:645765463095377921> [Java Script](https://github.com/Fortnite-API/js-wrapper) (by <@473592440817713172>)\n'
+                                         '<:python:642027841017479179> [Python](https://github.com/Fortnite-API/py-wrapper) (by <@262511457948663809>)\n'
+                                         '<:java:642027839008276493> [Java](https://github.com/Fortnite-API/java-wrapper) (by <@312157715449249795>)\n'
+                                         '<:csharp:642027845434212383> [C#](https://github.com/Fortnite-API/csharp-wrapper) (by <@373913699943186432>)\n'
+                                         '<:php:642041601291583488> [PHP](https://github.com/Fortnite-API/php-wrapper) (by <@473592440817713172>)\n')
             post_message.add_field(name='**Roles**', inline=False,
                                    value='React to the emojis to self-assign roles.\n\n'
                                          '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
-                                         '<:javascript:642027841512538148> **-** Java Script / Node.js\n'
+                                         '<:nodejs:642027841512538148> **-** Java Script / Node.js\n'
                                          '<:python:642027841017479179> **-** Python\n'
                                          '<:java:642027839008276493> **-** Java\n'
                                          '<:csharp:642027845434212383> **-** C#\n'
