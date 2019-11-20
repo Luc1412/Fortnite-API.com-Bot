@@ -180,7 +180,7 @@ class AdminCommands(commands.Cog):
                                          '[PayPal (donation)](https://fortnite-api.com/paypal)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
             post_message.add_field(name='**Libraries**',
-                                   value='<:javascript:645765463095377921> [Java Script](https://github.com/Fortnite-API/js-wrapper) (by <@473592440817713172>)\n'
+                                   value='<:javascript:645765463095377921> [JavaScript](https://github.com/Fortnite-API/js-wrapper) (by <@473592440817713172>)\n'
                                          '<:python:642027841017479179> [Python](https://github.com/Fortnite-API/py-wrapper) (by <@262511457948663809>)\n'
                                          '<:java:642027839008276493> [Java](https://github.com/Fortnite-API/java-wrapper) (by <@312157715449249795>)\n'
                                          '<:csharp:642027845434212383> [C#](https://github.com/Fortnite-API/csharp-wrapper) (by <@373913699943186432>)\n'
@@ -188,11 +188,12 @@ class AdminCommands(commands.Cog):
             post_message.add_field(name='**Roles**', inline=False,
                                    value='React to the emojis to self-assign roles.\n\n'
                                          '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
-                                         '<:nodejs:642027841512538148> **-** Java Script / Node.js\n'
+                                         '<:nodejs:642027841512538148> **-** JavaScript / Node.js\n'
                                          '<:python:642027841017479179> **-** Python\n'
                                          '<:java:642027839008276493> **-** Java\n'
                                          '<:csharp:642027845434212383> **-** C#\n'
                                          '<:php:642041601291583488> **-** PHP\n'
+                                         '<:ruby:646760486049677352> **-** Ruby\n'
                                          '<:swift:642027842334490652> **-** Swift\n'
                                          'Missing your programming language? Let us know.')
             post_message.set_footer(text=f'Last update')
