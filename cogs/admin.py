@@ -184,13 +184,15 @@ class AdminCommands(commands.Cog):
                                          '<:python:642027841017479179> [Python](https://github.com/Fortnite-API/py-wrapper) (by <@262511457948663809>)\n'
                                          '<:java:642027839008276493> [Java](https://github.com/Fortnite-API/java-wrapper) (by <@312157715449249795>)\n'
                                          '<:csharp:642027845434212383> [C#](https://github.com/Fortnite-API/csharp-wrapper) (by <@373913699943186432>)\n'
-                                         '<:php:642041601291583488> [PHP](https://github.com/Fortnite-API/php-wrapper) (by <@473592440817713172>)\n')
+                                         '<:php:642041601291583488> [PHP](https://github.com/Fortnite-API/php-wrapper) (by <@473592440817713172>)\n'
+                                         '<:ruby:646760486049677352> [Ruby](https://github.com/fortnite-api/ruby-wrapper) (by <@625769404050964480>)')
             post_message.add_field(name='**Roles**', inline=False,
                                    value='React to the emojis to self-assign roles.\n\n'
                                          '<:fortniteapi:641395927025844254> **-** Get notified about API Updates.\n\n'
                                          '<:nodejs:642027841512538148> **-** JavaScript / Node.js\n'
                                          '<:python:642027841017479179> **-** Python\n'
                                          '<:java:642027839008276493> **-** Java\n'
+                                         '<:kotlin:646802753112244229> **-** Kotlin\n'
                                          '<:csharp:642027845434212383> **-** C#\n'
                                          '<:php:642041601291583488> **-** PHP\n'
                                          '<:ruby:646760486049677352> **-** Ruby\n'
