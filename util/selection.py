@@ -154,14 +154,14 @@ class MultiReactionSelection(ReactionSelection):
             return SelectionResult(SelectionResultType.FAIL, 0)
 
         selections = []
-        for reaction in reaction.message.reactions:
-            if reaction.emoji not in self.reactions:
+        for r in reaction.message.reactions:
+            if r.emoji not in self.reactions:
                 continue
-            users = await reaction.users().flatten()
+            users = await r.users().flatten()
             for user in users:
                 if user is not self.interface.member:
                     continue
-                selections.append(reaction.emoji)
+                selections.append(r.emoji)
                 break
 
         reaction_task.cancel()
@@ -169,7 +169,7 @@ class MultiReactionSelection(ReactionSelection):
         emoji = reaction.emoji
         if emoji is self.interface.fail_emoji:
             return SelectionResult(SelectionResultType.FAIL, 1)
-        if self is not self.interface.first and emoji is self.interface.back_emoji:
+        if self is not self.interface.first and emoji == self.interface.back_emoji:
             return SelectionResult(SelectionResultType.BACK)
         return SelectionResult(SelectionResultType.SUCCESS, selections)
 
@@ -374,6 +374,7 @@ class SelectionInterface:
             self._result[0] = result.value
             await self.current_selection.run_action()
         elif result.type is SelectionResultType.FAIL:
+            self._result = None
             if result.value == 0:
                 self.current_selection.next = SelectionFail(self, self.timeout_title, self.timeout_text)
             elif result.value == 1:
@@ -399,6 +400,7 @@ class SelectionInterface:
                     self.current_selection = self.current_selection.prev
                     continue
                 elif result.type is SelectionResultType.FAIL:
+                    self._result = None
                     if result.value == 0:
                         self.current_selection.next = SelectionFail(self, self.timeout_title, self.timeout_text)
                     elif result.value == 1:

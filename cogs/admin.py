@@ -180,10 +180,11 @@ class AdminCommands(commands.Cog):
                                          '[PayPal (donation)](https://fortnite-api.com/paypal)\n'
                                          '[Server Invite](https://discord.gg/AqzEcMm)')
             post_message.add_field(name='**Libraries**',
-                                   value='<:javascript:645765463095377921> [JavaScript](https://github.com/Fortnite-API/js-wrapper) (by <@473592440817713172>)\n'
+                                   value='<:nodejs:642027841512538148> [Node.js](https://github.com/Fortnite-API/nodejs-wrapper) (by <@385794363042693120>)\n'
                                          '<:python:642027841017479179> [Python](https://github.com/Fortnite-API/py-wrapper) (by <@262511457948663809>)\n'
                                          '<:java:642027839008276493> [Java](https://github.com/Fortnite-API/java-wrapper) (by <@312157715449249795>)\n'
                                          '<:csharp:642027845434212383> [C#](https://github.com/Fortnite-API/csharp-wrapper) (by <@373913699943186432>)\n'
+                                         '<:javascript:645765463095377921> [JavaScript](https://github.com/Fortnite-API/js-wrapper) (by <@473592440817713172>)\n'
                                          '<:php:642041601291583488> [PHP](https://github.com/Fortnite-API/php-wrapper) (by <@473592440817713172>)\n'
                                          '<:ruby:646760486049677352> [Ruby](https://github.com/fortnite-api/ruby-wrapper) (by <@625769404050964480>)')
             post_message.add_field(name='**Roles**', inline=False,
