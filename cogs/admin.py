@@ -50,7 +50,7 @@ class AdminCommands(commands.Cog):
                                                              ReplacedText('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{}', f2),
                                                              color=discord.Color.blurple(),
                                                              image=ReplacedText('{}', f3),
-                                                             thumbnail='https://fortnite-api.com/logo.png',
+                                                             thumbnail=ctx.cfg.get('Images.Logo'),
                                                              footer='Subscribe to Updates in #info by clicking on the '
                                                                     'reaction.')
 
@@ -58,7 +58,7 @@ class AdminCommands(commands.Cog):
             update_message = discord.Embed()
             update_message.set_author(name=result[0])
             update_message.colour = discord.Color.blurple()
-            update_message.set_thumbnail(url='https://fortnite-api.com/logo.png')
+            update_message.set_thumbnail(url=context.cfg.get('Images.Logo'))
             update_message.description = f'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{result[1]}'
             update_message.set_footer(text='Subscribe to Updates in #info by clicking on the reaction.')
 
@@ -161,7 +161,7 @@ class AdminCommands(commands.Cog):
             post_message = discord.Embed()
             post_message.colour = discord.Color.blue()
             post_message.set_author(name='Fortnite-API.com', url='https://fortnite-api.com')
-            post_message.set_thumbnail(url='https://fortnite-api.com/logo.png')
+            post_message.set_thumbnail(url=ctx.cfg.get('Images.Logo'))
             post_message.description = 'Welcome to our Discord server!\n' \
                                        'Here you get support & updates of our API.'
             post_message.add_field(name='**Rules**', inline=False,
@@ -175,6 +175,7 @@ class AdminCommands(commands.Cog):
             post_message.add_field(name='**Links**',
                                    value='[Website](https://fortnite-api.com/)\n'
                                          '[Documentation](https://fortnite-api.com/documentation)\n'
+                                         '[Status](https://status.fortnite-api.com/)\n'
                                          '[Twitter](https://twitter.com/Fortnite_API)\n'
                                          '[GitHub](https://github.com/Fortnite-API)\n'
                                          '[PayPal (donation)](https://fortnite-api.com/paypal)\n'
