@@ -93,6 +93,10 @@ class Icon:
     def __init__(self, bot):
         self.bot = bot
 
+    def fortnite_api(self):
+        role_id = int(self.bot.cfg.get('Icons.FortniteAPI'))
+        return self.bot.get_emoji(role_id)
+
 
 class Color:
 

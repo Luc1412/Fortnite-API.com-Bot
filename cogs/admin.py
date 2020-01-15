@@ -65,9 +65,12 @@ class AdminCommands(commands.Cog):
             update_role = context.utils.role.notification()
             await update_role.edit(mentionable=True, reason='Update mention')
 
-            await context.utils.channel.news().send(
+            message = await context.utils.channel.news().send(
                 content=update_role.mention if selection.result()[3] == '🔔' else None,
-                embed=update_message)
+                embed=update_message
+            )
+
+            await message.add_reaction(context.utils.icon.fortnite_api())
 
             await update_role.edit(mentionable=False, reason='Update mention')
 
@@ -199,6 +202,7 @@ class AdminCommands(commands.Cog):
                                          '<:php:642041601291583488> **-** PHP\n'
                                          '<:ruby:646760486049677352> **-** Ruby\n'
                                          '<:swift:642027842334490652> **-** Swift\n'
+                                         '<:rust:667051312814489650> **-** Rust\n'
                                          'Missing your programming language? Let us know.')
             post_message.set_footer(text=f'Last update')
             post_message.timestamp = datetime.datetime.now(pytz.timezone('UTC'))

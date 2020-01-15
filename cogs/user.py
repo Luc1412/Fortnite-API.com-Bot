@@ -8,6 +8,8 @@ class UserCommands(commands.Cog):
     async def on_message(self, message: discord.Message):
         content = message.content.lower()
         if content.startswith('?id') or \
+           content.startswith('? id') or \
+           content.startswith('id?') or \
            content.startswith('?skin') or \
            content.startswith('.skin') or \
            content.startswith('+https://glitch.com/edit') or \
